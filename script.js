@@ -13,5 +13,16 @@ pizzaJson.map((item, index) => {
 
   pizzaItem.querySelector(".pizza-item--desc").innerHTML = item.description;
 
+  pizzaItem.querySelector("a").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    document.querySelector(".pizzaWindowArea").style.opacity = 0;
+    document.querySelector(".pizzaWindowArea").style.display = "flex";
+    setTimeout(() => {
+      document.querySelector(".pizzaWindowArea").style.opacity = 1;
+    }, 200);
+  });
+  // para abrir o modal listado no item acima.
+
   document.querySelector(".pizza-area").append(pizzaItem);
 });
