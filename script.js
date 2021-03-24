@@ -20,7 +20,10 @@ pizzaJson.map((item, index) => {
 
     let key = e.target.closest(".pizza-item").getAttribute("data-key");
 
+    document.querySelector(".pizzaBig img").src = pizzaJson[key].img;
     document.querySelector(".pizzaInfo h1").innerHTML = pizzaJson[key].name;
+    document.querySelector(".pizzaInfo--desc").innerHTML =
+      pizzaJson[key].description;
 
     document.querySelector(".pizzaWindowArea").style.opacity = 0;
     document.querySelector(".pizzaWindowArea").style.display = "flex";
