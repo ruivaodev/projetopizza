@@ -123,6 +123,15 @@ document
         qt: modalQt,
       });
     }
-
+    uptadeCart();
     closeModal();
   });
+// funçoes do carrinho de compras
+
+function uptadeCart() {
+  if (cart.length > 0) {
+    document.querySelector("aside").classList.add("show");
+  } else {
+    document.querySelector("aside").classList.remove("show");
+  }
+}
