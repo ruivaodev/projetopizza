@@ -107,11 +107,22 @@ document
         .getAttribute("data-key")
     );
 
-    cart.push({
-      id: pizzaJson[modalKey].id,
-      size,
-      qt: modalQt,
-    });
+    //mesmas pizzas e do mesmo tamanho precisam estar juntas
+    let identifier = pizzaJson[modalKey].id + "@" + size;
+
+    let key = cart.findIndex((item) => item.identifier == identifier);
+    //verificando se é o mesmo id
+
+    if (key > -1) {
+      cart[key].qt += modalQt;
+    } else {
+      cart.push({
+        identifier,
+        id: pizzaJson[modalKey].id,
+        size,
+        qt: modalQt,
+      });
+    }
 
     closeModal();
   });
