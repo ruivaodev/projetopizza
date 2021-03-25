@@ -1,4 +1,6 @@
+let cart = [];
 let modalQt = 1;
+let modalKey = 0;
 // clone dos itens que estão no pizza.js atraves das divs
 // LISTAGEM DE PIZZA.
 pizzaJson.map((item, index) => {
@@ -18,6 +20,8 @@ pizzaJson.map((item, index) => {
     let key = e.target.closest(".pizza-item").getAttribute("data-key");
 
     modalQt = 1;
+    modalKey = key; // sempre que clicar para pegar a pizza ela vai dizer qual é
+    //mostrar a pizza selecionada e salvar ela.
 
     document.querySelector(".pizzaBig img").src = pizzaJson[key].img;
     document.querySelector(".pizzaInfo h1").innerHTML = pizzaJson[key].name;
@@ -89,3 +93,25 @@ document.querySelectorAll(".pizzaInfo--size").forEach((size, sizeIndex) => {
     size.classList.add("selected");
   });
 });
+
+// carrinho de compras
+
+//qual pizza?
+document
+  .querySelector(".pizzaInfo--addButton")
+  .addEventListener("click", () => {
+    //qual tamanho?
+    let size = parseInt(
+      document
+        .querySelector(".pizzaInfo--size.selected")
+        .getAttribute("data-key")
+    );
+
+    cart.push({
+      id: pizzaJson[modalKey].id,
+      size,
+      qt: modalQt,
+    });
+
+    closeModal();
+  });
