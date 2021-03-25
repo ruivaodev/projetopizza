@@ -131,6 +131,9 @@ document
 function uptadeCart() {
   if (cart.length > 0) {
     document.querySelector("aside").classList.add("show");
+    for (let i in cart) {
+      let pizzaItem = pizzaJson.find((item) => item.id == cart[i].id);
+    }
   } else {
     document.querySelector("aside").classList.remove("show");
   }
