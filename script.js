@@ -157,6 +157,25 @@ function uptadeCart() {
       cartItem.querySelector("img").src = pizzaItem.img;
       cartItem.querySelector(".cart--item-nome").innerHTML = pizzaName;
       cartItem.querySelector(".cart--item--qt").innerHTML = cart[i].qt;
+      //adionar e remover itens abaixo:
+      cartItem
+        .querySelector(".cart--item-qtmenos")
+        .addEventListener("click", () => {
+          if (cart[i].qt > 1) {
+            cart[i].qt--;
+          } else {
+            cart.splice(i, 1); // remover o item do carrinho
+          }
+
+          uptadeCart();
+        });
+
+      cartItem
+        .querySelector(".cart--item-qtmais")
+        .addEventListener("click", () => {
+          cart[i].qt++;
+          uptadeCart();
+        });
 
       document.querySelector(".cart").append(cartItem);
     }
