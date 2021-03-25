@@ -1,6 +1,6 @@
 let modalQt = 1;
 // clone dos itens que estão no pizza.js atraves das divs
-
+// LISTAGEM DE PIZZA.
 pizzaJson.map((item, index) => {
   let pizzaItem = document.querySelector(".models .pizza-item").cloneNode(true);
 
@@ -50,3 +50,18 @@ pizzaJson.map((item, index) => {
 
   document.querySelector(".pizza-area").append(pizzaItem);
 });
+
+// EVENTOS DO MODAL
+
+function closeModal() {
+  document.querySelector(".pizzaWindowArea").style.opacity = 0;
+  setTimeout(() => {
+    document.querySelector(".pizzaWindowArea").style.display = "none";
+  }, 500);
+}
+
+document
+  .querySelectorAll(".pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton")
+  .forEach((item) => {
+    item.addEventListener("click", closeModal);
+  });
