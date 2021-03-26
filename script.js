@@ -127,8 +127,19 @@ document
     closeModal();
   });
 // funçoes do carrinho de compras
+document.querySelector(".menu-openner").addEventListener("click", () => {
+  if (cart.length > 0) {
+    document.querySelector("aside").style.left = "0";
+  }
+});
+
+document.querySelector(".menu-closer").addEventListener("click", () => {
+  document.querySelector("aside").style.left = "100vw";
+});
 
 function uptadeCart() {
+  document.querySelector(".menu-openner span").innerHTML = cart.length;
+
   if (cart.length > 0) {
     document.querySelector("aside").classList.add("show");
     document.querySelector(".cart").innerHTML = "";
@@ -200,5 +211,6 @@ function uptadeCart() {
     ).innerHTML = `R$ ${total.toFixed(2)}`;
   } else {
     document.querySelector("aside").classList.remove("show");
+    document.querySelector("aside").style.left = "100vw";
   }
 }
